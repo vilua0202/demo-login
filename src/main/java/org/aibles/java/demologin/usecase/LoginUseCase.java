@@ -1,6 +1,7 @@
 package org.aibles.java.demologin.usecase;
 
-import org.aibles.java.demologin.dto.response.LoginResponse;
+import org.aibles.java.demologin.dto.response.LoginData;
+//import org.aibles.java.demologin.dto.response.LoginResponse;
 import org.aibles.java.demologin.exception.CustomerNotFoundException;
 import org.aibles.java.demologin.exception.InvalidLoginException;
 import org.aibles.java.demologin.model.Customer;
@@ -30,7 +31,7 @@ public class LoginUseCase {
         this.redisService = redisService;
     }
 
-    public LoginResponse invoke(String username, String password) {
+    public LoginData invoke(String username, String password) throws CustomerNotFoundException, InvalidLoginException {
         Optional<Customer> customerOptional = customerRepository.findByUsername(username);
         if (customerOptional.isEmpty()) {
             throw new CustomerNotFoundException("Customer not found");
@@ -47,6 +48,6 @@ public class LoginUseCase {
 
         redisService.saveToken(username, tokens);
 
-        return new LoginResponse(tokens.getKey(), tokens.getValue(), jwtService.getJwtExpirationMs(), jwtService.getJwtRefreshExpirationMs()/* additional details like token expiry etc. */);
+        return new LoginData(tokens.getKey(), tokens.getValue(), jwtService.getJwtExpirationMs(), jwtService.getJwtRefreshExpirationMs()/* additional details like token expiry etc. */);
     }
 }

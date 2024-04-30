@@ -8,7 +8,7 @@ import java.util.Date;
 import jakarta.servlet.http.HttpServletRequest;
 
 import org.aibles.java.demologin.dto.request.LoginRequest;
-import org.aibles.java.demologin.dto.response.LoginResponse;
+//import org.aibles.java.demologin.dto.response.LoginResponse;
 import org.aibles.java.demologin.model.Customer;
 import org.aibles.java.demologin.service.UserDetailsImpl;
 import org.slf4j.Logger;
