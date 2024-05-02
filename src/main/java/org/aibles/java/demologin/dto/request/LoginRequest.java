@@ -1,15 +1,14 @@
 package org.aibles.java.demologin.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter
-@Getter
+@Data
 public class LoginRequest {
-    @NotBlank
+    @NotBlank(message = "username is required")
     private String username;
 
-    @NotBlank
+    @NotBlank(message = "password is required")
     private String password;
 }
+

@@ -4,11 +4,9 @@ import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.aibles.java.demologin.model.Customer;
-import org.aibles.java.demologin.util.JwtUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
@@ -75,6 +73,4 @@ public class JWTService {
         }
         return false;
     }
-
-    // Các phương thức mã hóa/giải mã khác...
 }
